@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #fafafa;
+    --foreground: #0f172a;
+  }
+
+  .dark {
+    --background: #0f1117;
+    --foreground: #e2e8f0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+  }
+}
+
+/* Highlight.js github-dark-dimmed theme */
+.hljs {
+  color: #adbac7;
+  background: #22272e;
+}
+.hljs-doctag,
+.hljs-keyword,
+.hljs-template-variable,
+.hljs-variable.language_ {
+  color: #f47067;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: #dcbdfb;
+}
+.hljs-attr,
+.hljs-number,
+.hljs-operator,
+.hljs-variable {
+  color: #6cb6ff;
+}
+.hljs-built_in,
+.hljs-symbol {
+  color: #f69d50;
+}
+.hljs-comment,
+.hljs-formula {
+  color: #768390;
+  font-style: italic;
+}
+.hljs-name,
+.hljs-quote,
+.hljs-selector-tag {
+  color: #8ddb8c;
+}
+.hljs-string,
+.hljs-regexp {
+  color: #96d0ff;
+}
+.hljs-section {
+  color: #316dca;
+  font-weight: bold;
+}
+.hljs-bullet {
+  color: #eac55f;
+}
+.hljs-addition {
+  color: #b4f1b4;
+  background-color: #1b4721;
+}
+.hljs-deletion {
+  color: #ffd8d3;
+  background-color: #78191b;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+/* Prose overrides for blog */
+.prose pre {
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  background: #22272e !important;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.prose code:not(pre code) {
+  background: rgb(241 245 249);
+  color: #6366f1;
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.dark .prose code:not(pre code) {
+  background: rgb(30 41 59);
+}
+
+.prose code::before,
+.prose code::after {
+  content: '' !important;
+}
+
+.prose blockquote {
+  border-left-color: #6366f1;
+  background: rgba(99, 102, 241, 0.04);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-style: normal;
+}
+
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 6rem;
+}
+
+.prose a {
+  color: #6366f1;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
