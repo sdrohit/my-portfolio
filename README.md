@@ -18,7 +18,7 @@
 | **@tailwindcss/typography** | Applies beautiful `prose` styles to MDX-rendered blog content. |
 | **clsx + tailwind-merge** | Clean conditional class composition without specificity conflicts. |
 
-**Deployment:** Runs on Vercel and Netlify without any platform-specific APIs or config. For Netlify, add `netlify.toml` with `publish = ".next"` and `command = "npm run build"`.
+**Deployment:** Runs on Vercel without any platform-specific APIs or config. For Netlify, add `netlify.toml` with `publish = ".next"` and `command = "npm run build"`.
 
 ---
 
