@@ -51,7 +51,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <Briefcase size={11} className="text-accent" />
-                9yr Experience
+                7+ yr Experience
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <MapPin size={11} className="text-accent" />
