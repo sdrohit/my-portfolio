@@ -125,7 +125,7 @@ export default function ProjectsPage() {
                   layout
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
                   className="group bg-white dark:bg-[#13151C] rounded-2xl border border-slate-100 dark:border-slate-800 overflow-hidden hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10 transition-all cursor-pointer flex flex-col"
-                  onClick={() => setSelected(project)}
+                  onClick={() => project.githubUrl ? window.open(project.githubUrl, '_blank') : setSelected(project)}
                 >
                   {/* Card header */}
                   <div className="relative h-16 bg-gradient-to-br from-accent/8 to-accent/4 dark:from-accent/15 dark:to-accent/5 overflow-hidden flex-shrink-0">
@@ -172,22 +172,13 @@ export default function ProjectsPage() {
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-3">
-                      <button className="flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
-                        View Details <ArrowRight size={13} />
-                      </button>
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
-                        >
-                          <Github size={13} /> GitHub
-                        </a>
+                    <button className="flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
+                      {project.githubUrl ? (
+                        <><Github size={13} /> View on GitHub</>
+                      ) : (
+                        <>View Details <ArrowRight size={13} /></>
                       )}
-                    </div>
+                    </button>
                   </div>
                 </motion.div>
               );

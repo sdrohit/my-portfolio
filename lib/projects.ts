@@ -10,7 +10,7 @@ export const ALL_PROJECTS: Project[] = [
     featured: true,
     githubUrl: 'https://github.com/sdrohit/buyer-propensity-scoring',
     shortDescription:
-      'Built an end-to-end propensity scoring engine on a complex synthetic 185K-row multi-table B2B SaaS dataset. Random Forest selected over XGBoost and LightGBM on AUC-PR (0.444) for imbalanced targets. SHAP explainability surfaces that product breadth and integration depth are the strongest conversion drivers. Hot-tier accounts (top 25%) convert at 80.6% vs. 26.5% baseline — a 3× lift that directly reduces AE cost-per-deal.',
+      'ML propensity scoring engine on 185K-row multi-table B2B SaaS data. Hot-tier accounts convert at 80.6% vs. 26.5% baseline — a 3× lift. SHAP-explained Random Forest, AUC-PR optimised.',
     tags: ['Python', 'Random Forest', 'SHAP', 'Scikit-learn', 'LightGBM', 'XGBoost'],
     detail: `## Buyer Propensity Scoring System
 
@@ -106,7 +106,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'ML & AI',
     featured: true,
     shortDescription:
-      'Combined binary churn classification with Kaplan-Meier survival curves and Cox Proportional Hazards modelling to predict both who will churn and when — enabling proactive retention interventions timed to individual customer risk windows.',
+      'Kaplan-Meier + Cox PH survival analysis predicting who will churn and when — enabling retention interventions timed to individual risk windows.',
     tags: ['Python', 'Survival Analysis', 'XGBoost', 'Scikit-learn', 'SHAP'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -116,7 +116,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'ML & Predictive Analytics',
     domain: 'ML & AI',
     shortDescription:
-      'Replaced gut-feel quarterly commit calls with an ML-based pipeline forecast model, producing probabilistic revenue estimates by segment, rep, and product line — with confidence intervals that surface sandbagging and pipeline risk early.',
+      'ML pipeline forecast replacing gut-feel commit calls with probabilistic revenue estimates by segment, rep, and product line.',
     tags: ['Python', 'XGBoost', 'Time Series', 'Scikit-learn', 'SQL'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -126,7 +126,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'ML & People Analytics',
     domain: 'ML & AI',
     shortDescription:
-      'Identified drivers of voluntary employee attrition across 5,000 synthetic HR records using gradient boosting and SHAP — enabling People teams to target retention interventions on flight-risk segments before resignation.',
+      'SHAP-explained gradient boosting model identifying the drivers of voluntary attrition — targeting flight-risk employees before resignation.',
     tags: ['Python', 'Random Forest', 'SHAP', 'HR Analytics', 'Scikit-learn'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -139,7 +139,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'Marketing',
     featured: true,
     shortDescription:
-      'Designed a matched-market geo-lift testing system to measure the true incrementality of digital campaigns, moving attribution beyond last-click to causal measurement using synthetic control and permutation testing.',
+      'Matched-market incrementality framework using synthetic control and permutation testing — moving beyond last-click to true causal measurement.',
     tags: ['Python', 'Causal Inference', 'Synthetic Control', 'Statistics'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -149,7 +149,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Marketing Analytics',
     domain: 'Marketing',
     shortDescription:
-      'Replaced last-touch attribution with a Shapley value + Markov chain MTA model, surfacing hidden upper-funnel touchpoint value across the full customer journey and re-allocating media budget toward highest-incrementality channels.',
+      'Shapley value + Markov chain MTA model surfacing hidden upper-funnel value and re-allocating budget toward highest-incrementality channels.',
     tags: ['SQL', 'Python', 'Shapley Values', 'Markov Chain'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -160,7 +160,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'Marketing',
     featured: true,
     shortDescription:
-      'Built an end-to-end funnel analysis from anonymous to authenticated user journeys, packaged as a stakeholder-ready narrative report that directly informed product and marketing strategy.',
+      'End-to-end funnel from anonymous to authenticated journeys, packaged as a stakeholder narrative report that informed product and marketing strategy.',
     tags: ['GA4', 'BigQuery', 'Python', 'Data Narrative'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -170,7 +170,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Business Analytics & Strategy',
     domain: 'Marketing',
     shortDescription:
-      'Decomposed ARR growth into acquisition, activation, expansion, and churn components using growth accounting — quantifying each lever and finding that activation-rate improvement had 3× the ARR impact of new logo acquisition.',
+      'ARR growth decomposed into acquisition, activation, expansion, and churn levers — finding activation improvement had 3× the impact of new logo acquisition.',
     tags: ['Python', 'SQL', 'BigQuery', 'Growth Accounting'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -183,7 +183,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'BI & Finance',
     featured: true,
     shortDescription:
-      'Built a segment-level CAC/LTV model decomposing acquisition cost across channels and computing cohort-based LTV — surfacing which customer segments are structurally profitable and which are subsidised by blended averages.',
+      'Segment-level CAC/LTV model surfacing which cohorts are structurally profitable vs. subsidised by blended averages.',
     tags: ['Python', 'SQL', 'Cohort Analysis', 'Financial Modelling'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -194,7 +194,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'BI & Finance',
     featured: true,
     shortDescription:
-      'Designed and delivered a suite of executive-facing dashboards replacing weekly ad hoc reporting — enabling self-serve analytics adoption across marketing and sales leadership and reducing analyst ad hoc load by 60%.',
+      'Executive dashboard suite replacing weekly ad hoc reporting — 60% reduction in analyst request volume, self-serve adoption across marketing and sales leadership.',
     tags: ['Power BI', 'DAX', 'GA4', 'SQL'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -204,7 +204,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Data Strategy & Governance',
     domain: 'BI & Finance',
     shortDescription:
-      'Designed and deployed a semantic data layer enabling non-technical stakeholders to answer 80% of recurring data questions without analyst involvement — built on dbt-modelled warehouse tables and a governed Looker instance.',
+      'Semantic data layer on dbt + Looker enabling non-technical stakeholders to answer 80% of data questions without analyst involvement.',
     tags: ['dbt', 'BigQuery', 'Looker', 'SQL', 'Data Governance'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -216,7 +216,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Product Analytics',
     domain: 'Product',
     shortDescription:
-      'Built a Product Qualified Lead (PQL) scoring engine that identifies free-to-paid conversion signals from product usage telemetry — enabling sales to prioritise inbound product-led accounts before they request a demo.',
+      'PQL scoring engine identifying free-to-paid conversion signals from usage telemetry — enabling sales to prioritise product-led accounts before they request a demo.',
     tags: ['Python', 'SQL', 'Scikit-learn', 'Product Analytics'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -226,7 +226,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Product Analytics',
     domain: 'Product',
     shortDescription:
-      'Designed a north star metric framework mapping feature adoption milestones to long-term retention outcomes — identifying the 3 product actions most predictive of 90-day retention and aligning the product org around a single measurable north star.',
+      'North star metric framework mapping feature adoption to 90-day retention — identifying the 3 product actions that matter most.',
     tags: ['Python', 'SQL', 'BigQuery', 'Product Analytics'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -236,7 +236,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Product Analytics',
     domain: 'Product',
     shortDescription:
-      'Built cohort retention curves segmented by acquisition channel, plan type, and onboarding flow — revealing that API-activated accounts retain 2.4× better than UI-only users at 12 months and directly informing the onboarding redesign.',
+      'Cohort retention curves by channel, plan, and onboarding flow — API-activated accounts retain 2.4× better at 12 months.',
     tags: ['Python', 'SQL', 'Cohort Analysis', 'Matplotlib'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -248,7 +248,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Sales Analytics',
     domain: 'Sales',
     shortDescription:
-      'Automated win/loss analysis across 2,000+ closed deals using deal metadata and CRM signals — surfacing competitive loss patterns and the account characteristics most predictive of beating top competitors in head-to-head evaluations.',
+      'Automated win/loss analysis across 2,000+ deals — surfacing competitive loss patterns and the firmographic signals that predict beating top competitors.',
     tags: ['Python', 'SQL', 'NLP', 'Scikit-learn'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -258,7 +258,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Sales Analytics',
     domain: 'Sales',
     shortDescription:
-      'Built a rep-level performance analytics system tracking quota attainment distribution, ramp curves, and activity-to-outcome ratios — enabling data-driven coaching prioritisation and bottom-up capacity planning for the sales org.',
+      'Rep-level attainment distribution, ramp curves, and activity ratios — enabling data-driven coaching and bottom-up capacity planning.',
     tags: ['SQL', 'Python', 'Power BI', 'Sales Operations'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -271,7 +271,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'Experimentation',
     featured: true,
     shortDescription:
-      'Built a reusable experimentation framework with pre-experiment power calculation, sequential testing guardrails, and Bayesian updating — standardising how the organisation runs and interprets product and marketing experiments.',
+      'Reusable A/B testing framework with power calculation, sequential testing guardrails, and Bayesian updating — standardising experiment design and interpretation.',
     tags: ['Python', 'Statistics', 'Bayesian A/B', 'Power Analysis'],
     detail: '[Placeholder — full case study coming]',
   },
@@ -284,7 +284,7 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     domain: 'Customer',
     featured: true,
     shortDescription:
-      'Applied RFM + behavioural clustering to segment 10,000+ customers into 6 actionable personas — defining the Ideal Customer Profile (ICP) that informed territory design, outbound targeting, and product roadmap prioritisation.',
+      'RFM + behavioural clustering across 10,000+ customers into 6 personas — defining the ICP that shaped territory design, outbound targeting, and roadmap priority.',
     tags: ['Python', 'K-Means', 'SQL', 'Scikit-learn', 'RFM Analysis'],
     detail: '[Placeholder — full case study coming]',
   },
