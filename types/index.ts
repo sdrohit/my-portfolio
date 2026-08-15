@@ -33,7 +33,7 @@ export interface ExperienceItem {
   role: string;
   period: string;
   location: string;
-  bullets: string[];
+  bullets?: string[];
 }
 
 export interface StatItem {
