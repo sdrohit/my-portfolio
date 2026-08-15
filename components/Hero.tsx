@@ -24,14 +24,20 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-[#FAFAFA] dark:bg-[#0F1117]">
-      {/* Dot grid background */}
+
+      {/* Background — two soft gradient orbs */}
+      <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-accent/10 via-indigo-300/5 to-transparent blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-violet-400/6 to-transparent blur-3xl pointer-events-none" />
+
+      {/* Subtle dot grid on top */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.13) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.07) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
       />
+
       {/* Gradient fade bottom */}
       <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#FAFAFA] dark:from-[#0F1117] to-transparent pointer-events-none" />
 
@@ -133,23 +139,37 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: RSD monogram card ── */}
+          {/* ── Right: Profile photo ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
             className="relative flex-shrink-0"
           >
-            {/* Ambient glow */}
-            <div className="absolute inset-0 rounded-3xl bg-accent/25 blur-3xl scale-110 pointer-events-none" />
+            {/* Floating stat — Years */}
+            <motion.div
+              initial={{ opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+              className="absolute -left-6 top-10 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 shadow-lg shadow-slate-200/60 dark:shadow-black/30 z-10"
+            >
+              <p className="text-xl font-bold text-accent leading-none">9+</p>
+              <p className="text-xs text-slate-400 leading-none mt-1">Years Exp.</p>
+            </motion.div>
 
-            {/* Outer ring */}
-            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-accent via-accent/40 to-indigo-300/60 blur-sm opacity-70 pointer-events-none" />
+            {/* Floating stat — Projects */}
+            <motion.div
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 1.0 }}
+              className="absolute -right-6 top-10 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 shadow-lg shadow-slate-200/60 dark:shadow-black/30 z-10"
+            >
+              <p className="text-xl font-bold text-accent leading-none">18</p>
+              <p className="text-xs text-slate-400 leading-none mt-1">Projects</p>
+            </motion.div>
 
-            {/* Card */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border-2 border-accent/60 overflow-hidden shadow-2xl shadow-accent/30">
-
-              {/* Profile photo */}
+            {/* Clean circular photo — no glow */}
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border border-slate-200 dark:border-slate-700 overflow-hidden shadow-xl shadow-slate-200/80 dark:shadow-black/40">
               <Image
                 src="/IMG_7BF56E699C36-1.jpeg"
                 alt="Rohit Shenvi Diwadkar"
@@ -157,19 +177,16 @@ export default function Hero() {
                 className="object-cover object-center"
                 priority
               />
-
-              {/* Subtle inner vignette */}
-              <div className="absolute inset-0 shadow-[inset_0_0_30px_rgba(99,102,241,0.15)] pointer-events-none" />
             </div>
 
-            {/* Floating badge */}
+            {/* Floating badge — current role */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8 }}
               className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-5 py-3 shadow-xl flex items-center gap-3 whitespace-nowrap"
             >
-              <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0" />
+              <div className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
               <div>
                 <p className="text-xs text-slate-400 leading-none mb-0.5">Analytics Lead</p>
                 <p className="text-sm font-semibold text-slate-900 dark:text-white leading-none">CoStar Group</p>

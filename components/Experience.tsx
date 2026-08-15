@@ -1,6 +1,7 @@
 'use client';
-import { motion } from 'framer-motion';
-import { Calendar, MapPin } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import type { ExperienceItem } from '@/types';
 
 const EXPERIENCE: ExperienceItem[] = [
@@ -49,14 +50,19 @@ const EXPERIENCE: ExperienceItem[] = [
 ];
 
 export default function Experience() {
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [openMobile, setOpenMobile] = useState<number | null>(0);
+  const active = EXPERIENCE[activeIdx];
+
   return (
     <section id="experience" className="py-24 bg-white dark:bg-[#13151C]">
       <div className="max-w-5xl mx-auto px-6">
+
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
           className="flex items-center gap-3 mb-4"
         >
           <div className="w-8 h-px bg-accent" />
@@ -67,56 +73,148 @@ export default function Experience() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-50 mb-16"
+          transition={{ delay: 0.1 }}
+          className="font-display text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-50 mb-12"
         >
           Where I&apos;ve Worked
         </motion.h2>
 
-        <div className="relative">
-          {/* Vertical line — centered on desktop, left on mobile */}
-          <div className="absolute left-4 top-3 bottom-3 w-px bg-slate-200 dark:bg-slate-700 md:left-1/2 md:-translate-x-1/2" />
-
-          <div className="space-y-10">
-            {EXPERIENCE.map((item, i) => {
-              const isLeft = i % 2 === 0;
-              return (
-                <motion.div
-                  key={`${item.company}-${i}`}
-                  initial={{ opacity: 0, x: isLeft ? -28 : 28 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.55 }}
-                  className={`relative flex md:items-start ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
-                >
-                  {/* Timeline node */}
-                  <div className="absolute left-4 md:left-1/2 top-6 -translate-x-1/2 w-3 h-3 rounded-full bg-accent border-2 border-white dark:border-[#13151C] z-10 shadow-md shadow-accent/30" />
-
-                  {/* Card */}
-                  <div className={`ml-10 md:ml-0 md:w-[calc(50%-2.5rem)] ${isLeft ? 'md:mr-auto md:pr-6' : 'md:ml-auto md:pl-6'}`}>
-                    <div className="bg-[#FAFAFA] dark:bg-[#1C1F28] rounded-2xl p-5 border border-slate-100 dark:border-slate-800 hover:border-accent/30 hover:shadow-md transition-all">
-                      <p className="text-xs font-semibold text-accent mb-1">{item.company}</p>
-                      <h3 className="font-display font-bold text-slate-900 dark:text-slate-50 text-lg mb-2 leading-tight">
-                        {item.role}
-                      </h3>
-                      <div className="flex flex-wrap gap-3 mb-3">
-                        <span className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <Calendar size={11} /> {item.period}
-                        </span>
-                        <span className="flex items-center gap-1.5 text-xs text-slate-400">
-                          <MapPin size={11} /> {item.location}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Spacer for opposite side on desktop */}
-                  <div className="hidden md:block md:w-[calc(50%-2.5rem)]" />
-                </motion.div>
-              );
-            })}
+        {/* ── Desktop: two-column tab layout ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15 }}
+          className="hidden md:flex gap-8"
+        >
+          {/* Left: role selector */}
+          <div className="w-60 flex-shrink-0 space-y-1">
+            {EXPERIENCE.map((item, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIdx(i)}
+                className={`w-full text-left px-4 py-3.5 rounded-xl transition-all relative group ${
+                  activeIdx === i
+                    ? 'bg-accent/8 dark:bg-accent/10'
+                    : 'hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                }`}
+              >
+                {/* Active indicator bar */}
+                {activeIdx === i && (
+                  <motion.div
+                    layoutId="activeBar"
+                    className="absolute left-0 top-2 bottom-2 w-0.5 bg-accent rounded-full"
+                  />
+                )}
+                <p className={`text-[11px] font-semibold mb-0.5 transition-colors ${activeIdx === i ? 'text-accent' : 'text-slate-400'}`}>
+                  {item.period}
+                </p>
+                <p className={`text-sm font-semibold leading-tight transition-colors ${activeIdx === i ? 'text-slate-900 dark:text-slate-50' : 'text-slate-600 dark:text-slate-400'}`}>
+                  {item.role}
+                </p>
+                <p className="text-xs text-slate-400 mt-0.5 leading-tight">{item.company}</p>
+              </button>
+            ))}
           </div>
+
+          {/* Right: detail panel */}
+          <div className="flex-1 min-h-[260px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIdx}
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ duration: 0.25 }}
+                className="h-full"
+              >
+                <div className="bg-[#FAFAFA] dark:bg-[#1C1F28] rounded-2xl p-8 border border-slate-100 dark:border-slate-800 h-full">
+                  <span className="inline-block text-xs font-semibold text-accent bg-accent/8 dark:bg-accent/10 px-3 py-1 rounded-full mb-4">
+                    {active.company}
+                  </span>
+                  <h3 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 mb-3 leading-tight">
+                    {active.role}
+                  </h3>
+                  <div className="flex flex-wrap gap-4 mb-6">
+                    <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                      <Calendar size={12} className="text-accent/60" />
+                      {active.period}
+                    </span>
+                    <span className="flex items-center gap-1.5 text-xs text-slate-400">
+                      <MapPin size={12} className="text-accent/60" />
+                      {active.location}
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {active.bullets.map((bullet, bi) => (
+                      <li key={bi} className="flex gap-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* ── Mobile: accordion ── */}
+        <div className="md:hidden space-y-2">
+          {EXPERIENCE.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              className="rounded-xl border border-slate-100 dark:border-slate-800 overflow-hidden bg-white dark:bg-[#1C1F28]"
+            >
+              <button
+                onClick={() => setOpenMobile(openMobile === i ? null : i)}
+                className="w-full px-5 py-4 flex items-center justify-between text-left"
+              >
+                <div>
+                  <p className="text-xs text-accent font-semibold mb-0.5">{item.period}</p>
+                  <p className="text-sm font-semibold text-slate-900 dark:text-slate-50">{item.role}</p>
+                  <p className="text-xs text-slate-400">{item.company}</p>
+                </div>
+                <ChevronDown
+                  size={16}
+                  className={`text-slate-400 transition-transform flex-shrink-0 ml-3 ${openMobile === i ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {openMobile === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-5 pb-5 border-t border-slate-100 dark:border-slate-800 pt-4">
+                      <span className="flex items-center gap-1.5 text-xs text-slate-400 mb-3">
+                        <MapPin size={11} className="text-accent/60" />
+                        {item.location}
+                      </span>
+                      <ul className="space-y-2.5">
+                        {item.bullets.map((bullet, bi) => (
+                          <li key={bi} className="flex gap-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 flex-shrink-0" />
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
         </div>
+
       </div>
     </section>
   );
