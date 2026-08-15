@@ -18,7 +18,7 @@ export default function Hero() {
   const [domainIdx, setDomainIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setDomainIdx((i) => (i + 1) % DOMAINS.length), 3000);
+    const t = setInterval(() => setDomainIdx((i) => (i + 1) % DOMAINS.length), 2200);
     return () => clearInterval(t);
   }, []);
 
@@ -54,7 +54,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <Briefcase size={11} className="text-accent" />
-                7+ yr Experience
+                9+ yr Experience
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <MapPin size={11} className="text-accent" />
@@ -87,10 +87,10 @@ export default function Hero() {
               <AnimatePresence mode="wait">
                 <motion.span
                   key={domainIdx}
-                  initial={{ opacity: 0, y: 14 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -14 }}
-                  transition={{ duration: 0.35 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.22 }}
                   className="text-xl md:text-2xl font-bold text-accent"
                 >
                   {DOMAINS[domainIdx]}
@@ -105,9 +105,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed"
             >
-              I turn complex data into clear decisions. From prescriptive models to executive dashboards —{' '}
+              9 years turning complex datasets into decisions leadership acts on — from{' '}
               <span className="text-slate-800 dark:text-slate-200 font-medium">
-                I&apos;m the analyst leadership actually listens to.
+                predictive models and causal measurement to executive dashboards and data strategy.
               </span>
             </motion.p>
 
@@ -123,6 +123,12 @@ export default function Hero() {
                 className="px-7 py-3.5 bg-accent text-white rounded-xl font-semibold hover:bg-[#4F46E5] transition-colors shadow-lg shadow-accent/25 text-sm"
               >
                 See My Work
+              </a>
+              <a
+                href="#contact"
+                className="px-7 py-3.5 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 rounded-xl font-semibold hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700 text-sm"
+              >
+                Get in Touch
               </a>
             </motion.div>
           </div>
