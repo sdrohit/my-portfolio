@@ -2,7 +2,9 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ImageIcon } from 'lucide-react';
+import { X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import type { Project } from '@/types';
 
 interface Props {
@@ -67,7 +69,7 @@ export default function ProjectModal({ project, onClose }: Props) {
             </div>
 
             {/* Body */}
-            <div className="p-6 space-y-6">
+            <div className="p-6 space-y-5">
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
                   <span
@@ -79,18 +81,30 @@ export default function ProjectModal({ project, onClose }: Props) {
                 ))}
               </div>
 
-              {/* Placeholder image/chart area */}
-              <div className="rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700 h-52 flex flex-col items-center justify-center gap-2 text-slate-400 bg-slate-50 dark:bg-slate-800/30">
-                <ImageIcon size={28} className="opacity-50" />
-                <span className="text-sm">Chart / Diagram / Screenshot placeholder</span>
-              </div>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                {project.shortDescription}
+              </p>
 
-              <div className="space-y-3">
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                  {project.shortDescription}
-                </p>
+              {project.detail && project.detail !== '[Placeholder — full case study coming]' ? (
+                <div className="prose prose-sm dark:prose-invert max-w-none
+                  prose-headings:font-display prose-headings:text-slate-900 dark:prose-headings:text-slate-50
+                  prose-h2:text-lg prose-h2:font-bold prose-h2:mt-6 prose-h2:mb-2
+                  prose-h3:text-sm prose-h3:font-semibold prose-h3:text-accent prose-h3:uppercase prose-h3:tracking-wider prose-h3:mt-5 prose-h3:mb-2
+                  prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-p:text-sm prose-p:leading-relaxed
+                  prose-li:text-slate-600 dark:prose-li:text-slate-400 prose-li:text-sm
+                  prose-strong:text-slate-800 dark:prose-strong:text-slate-200
+                  prose-table:text-sm prose-table:w-full
+                  prose-th:text-left prose-th:text-xs prose-th:font-semibold prose-th:text-accent prose-th:uppercase prose-th:tracking-wider prose-th:border-b prose-th:border-slate-200 dark:prose-th:border-slate-700 prose-th:pb-2
+                  prose-td:border-b prose-td:border-slate-100 dark:prose-td:border-slate-800 prose-td:py-1.5 prose-td:pr-4
+                  prose-hr:border-slate-200 dark:prose-hr:border-slate-700 prose-hr:my-4
+                  prose-code:text-accent prose-code:text-xs prose-code:bg-accent/10 prose-code:px-1 prose-code:rounded">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                    {project.detail}
+                  </ReactMarkdown>
+                </div>
+              ) : (
                 <p className="text-slate-400 dark:text-slate-500 italic text-sm">{project.detail}</p>
-              </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

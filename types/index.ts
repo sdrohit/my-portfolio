@@ -21,9 +21,11 @@ export interface Project {
   id: string;
   title: string;
   area: string;
+  domain: string;
   shortDescription: string;
   tags: string[];
   detail: string;
+  featured?: boolean;
 }
 
 export interface ExperienceItem {
