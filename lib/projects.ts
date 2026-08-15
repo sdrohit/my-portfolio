@@ -8,6 +8,7 @@ export const ALL_PROJECTS: Project[] = [
     area: 'ML & Predictive Analytics',
     domain: 'ML & AI',
     featured: true,
+    githubUrl: 'https://github.com/sdrohit/buyer-propensity-scoring',
     shortDescription:
       'Built an end-to-end propensity scoring engine on a complex synthetic 185K-row multi-table B2B SaaS dataset. Random Forest selected over XGBoost and LightGBM on AUC-PR (0.444) for imbalanced targets. SHAP explainability surfaces that product breadth and integration depth are the strongest conversion drivers. Hot-tier accounts (top 25%) convert at 80.6% vs. 26.5% baseline — a 3× lift that directly reduces AE cost-per-deal.',
     tags: ['Python', 'Random Forest', 'SHAP', 'Scikit-learn', 'LightGBM', 'XGBoost'],

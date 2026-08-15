@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, Github } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import type { Project } from '@/types';
@@ -59,13 +59,25 @@ export default function ProjectModal({ project, onClose }: Props) {
                   {project.title}
                 </h3>
               </div>
-              <button
-                onClick={onClose}
-                aria-label="Close"
-                className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex-shrink-0 ml-4 text-slate-500"
-              >
-                <X size={18} />
-              </button>
+              <div className="flex items-center gap-2 flex-shrink-0 ml-4">
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    <Github size={14} /> View on GitHub
+                  </a>
+                )}
+                <button
+                  onClick={onClose}
+                  aria-label="Close"
+                  className="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors text-slate-500"
+                >
+                  <X size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Body */}

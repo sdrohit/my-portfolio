@@ -26,6 +26,7 @@ export interface Project {
   tags: string[];
   detail: string;
   featured?: boolean;
+  githubUrl?: string;
 }
 
 export interface ExperienceItem {

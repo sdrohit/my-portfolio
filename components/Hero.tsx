@@ -112,7 +112,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed"
             >
-              9 years turning complex datasets into decisions leadership acts on — from{' '}
+              7+ years turning complex datasets into decisions leadership acts on — from{' '}
               <span className="text-slate-800 dark:text-slate-200 font-medium">
                 predictive models and causal measurement to executive dashboards and data strategy.
               </span>

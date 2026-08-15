@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, TrendingUp, Brain, BarChart2, LayoutDashboard, Users, Activity } from 'lucide-react';
+import { ArrowRight, TrendingUp, Brain, BarChart2, LayoutDashboard, Users, Activity, Github } from 'lucide-react';
 import Link from 'next/link';
 import ProjectModal from './ProjectModal';
 import { FEATURED_PROJECTS } from '@/lib/projects';
@@ -114,9 +114,22 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <button className="flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
-                    View Details <ArrowRight size={14} />
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <button className="flex items-center gap-1.5 text-sm font-semibold text-accent group-hover:gap-3 transition-all">
+                      View Details <ArrowRight size={14} />
+                    </button>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
+                      >
+                        <Github size={14} /> GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             );
