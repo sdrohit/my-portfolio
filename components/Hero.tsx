@@ -146,37 +146,29 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
             className="relative flex-shrink-0"
           >
-            {/* Floating stat — Years */}
-            <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-              className="absolute -left-6 top-10 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 shadow-lg shadow-slate-200/60 dark:shadow-black/30 z-10"
-            >
-              <p className="text-xl font-bold text-accent leading-none">9+</p>
-              <p className="text-xs text-slate-400 leading-none mt-1">Years Exp.</p>
-            </motion.div>
+            {/* Photo + decorative ring */}
+            <div className="relative w-64 h-64 sm:w-72 sm:h-72">
 
-            {/* Floating stat — Projects */}
-            <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.0 }}
-              className="absolute -right-6 top-10 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-4 py-3 shadow-lg shadow-slate-200/60 dark:shadow-black/30 z-10"
-            >
-              <p className="text-xl font-bold text-accent leading-none">18</p>
-              <p className="text-xs text-slate-400 leading-none mt-1">Projects</p>
-            </motion.div>
+              {/* Outer dashed decorative ring */}
+              <div className="absolute -inset-5 rounded-full border border-dashed border-accent/25 dark:border-accent/20 pointer-events-none" />
 
-            {/* Clean circular photo — no glow */}
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full border border-slate-200 dark:border-slate-700 overflow-hidden shadow-xl shadow-slate-200/80 dark:shadow-black/40">
-              <Image
-                src="/IMG_7BF56E699C36-1.jpeg"
-                alt="Rohit Shenvi Diwadkar"
-                fill
-                className="object-cover object-center"
-                priority
-              />
+              {/* Three accent dots sitting on the ring */}
+              <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-5 block w-2.5 h-2.5 rounded-full bg-accent/60 shadow-sm shadow-accent/40" />
+              <span className="absolute bottom-0 right-[18%] translate-y-5 block w-2 h-2 rounded-full bg-accent/35" />
+              <span className="absolute top-[18%] right-0 translate-x-5 block w-2 h-2 rounded-full bg-accent/35" />
+
+              {/* Gradient border + photo */}
+              <div className="w-full h-full p-[2px] rounded-full bg-gradient-to-br from-accent/40 via-transparent to-violet-400/20">
+                <div className="relative w-full h-full rounded-full overflow-hidden shadow-xl shadow-slate-200/70 dark:shadow-black/40">
+                  <Image
+                    src="/IMG_7BF56E699C36-1.jpeg"
+                    alt="Rohit Shenvi Diwadkar"
+                    fill
+                    className="object-cover object-center"
+                    priority
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Floating badge — current role */}
