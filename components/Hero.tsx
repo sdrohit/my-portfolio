@@ -29,12 +29,13 @@ export default function Hero() {
       <div className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full bg-gradient-to-bl from-accent/10 via-indigo-300/5 to-transparent blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[450px] h-[450px] rounded-full bg-gradient-to-tr from-violet-400/6 to-transparent blur-3xl pointer-events-none" />
 
-      {/* Subtle dot grid on top */}
+      {/* Line grid background */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(circle, rgba(99,102,241,0.07) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
+          backgroundImage:
+            'linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
         }}
       />
 
@@ -60,7 +61,7 @@ export default function Hero() {
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <Briefcase size={11} className="text-accent" />
-                9+ yr Experience
+                7+ yr Experience
               </span>
               <span className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 rounded-full text-xs font-medium">
                 <MapPin size={11} className="text-accent" />
@@ -171,19 +172,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating badge — current role */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-[#1C1F28] border border-slate-200 dark:border-slate-700 rounded-2xl px-5 py-3 shadow-xl flex items-center gap-3 whitespace-nowrap"
-            >
-              <div className="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0" />
-              <div>
-                <p className="text-xs text-slate-400 leading-none mb-0.5">Analytics Lead</p>
-                <p className="text-sm font-semibold text-slate-900 dark:text-white leading-none">CoStar Group</p>
-              </div>
-            </motion.div>
           </motion.div>
 
         </div>

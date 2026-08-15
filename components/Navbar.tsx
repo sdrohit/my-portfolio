@@ -60,9 +60,9 @@ export default function Navbar() {
           <a
             href="#"
             onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="font-display font-bold text-slate-900 dark:text-slate-50 tracking-tight text-lg hover:text-accent transition-colors flex-shrink-0"
+            className="flex items-center justify-center w-10 h-10 rounded-xl bg-accent text-white font-display font-bold text-sm tracking-wide hover:bg-[#4F46E5] transition-colors flex-shrink-0"
           >
-            Rohit Shenvi Diwadkar
+            RSD
           </a>
 
           {/* Desktop nav */}
