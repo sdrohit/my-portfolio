@@ -4,18 +4,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
-const ROLES = [
-  'Analytics Lead & Advisor',
-  'Marketing Measurement Scientist',
-  'Lead Business Intelligence Analyst',
-  'Lead Marketing Data Analyst',
+const DOMAINS = [
+  'Business Intelligence',
+  'Measurement Science',
+  'Statistical Inference',
+  'Data Analysis',
+  'Artificial Intelligence',
+  'Analytics Consultancy',
+  'Marketing Science & Analytics',
 ];
 
 export default function Hero() {
-  const [roleIdx, setRoleIdx] = useState(0);
+  const [domainIdx, setDomainIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setRoleIdx((i) => (i + 1) % ROLES.length), 3200);
+    const t = setInterval(() => setDomainIdx((i) => (i + 1) % DOMAINS.length), 3000);
     return () => clearInterval(t);
   }, []);
 
@@ -71,23 +74,26 @@ export default function Hero() {
               Diwadkar
             </motion.h1>
 
-            {/* Role rotator */}
+            {/* Expert in [domain] rotator */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="h-8 flex items-center justify-center lg:justify-start mb-6"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-x-2.5 gap-y-1 mb-6 min-h-[2rem]"
             >
+              <span className="text-lg md:text-xl font-medium text-slate-400 dark:text-slate-500 flex-shrink-0">
+                Expert in
+              </span>
               <AnimatePresence mode="wait">
                 <motion.span
-                  key={roleIdx}
-                  initial={{ opacity: 0, y: 12 }}
+                  key={domainIdx}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-xl md:text-2xl font-medium text-accent"
+                  exit={{ opacity: 0, y: -14 }}
+                  transition={{ duration: 0.35 }}
+                  className="text-xl md:text-2xl font-bold text-accent"
                 >
-                  {ROLES[roleIdx]}
+                  {DOMAINS[domainIdx]}
                 </motion.span>
               </AnimatePresence>
             </motion.div>
