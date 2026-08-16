@@ -138,10 +138,87 @@ Beeswarm insight: High NPS has the widest positive SHAP spread; low NPS is the s
     area: 'Marketing Measurement Science',
     domain: 'Marketing',
     featured: true,
+    githubUrl: 'https://github.com/sdrohit/geo-lift-incrementality',
     shortDescription:
-      'Matched-market incrementality framework using synthetic control and permutation testing — moving beyond last-click to true causal measurement.',
-    tags: ['Python', 'Causal Inference', 'Synthetic Control', 'Statistics'],
-    detail: '[Placeholder — full case study coming]',
+      'Causal geo-experiment across 40 US DMAs — DiD, synthetic control, and permutation testing recover 18% planted lift to within 1pp. iROAS 4×. Four methodological edge cases documented and fixed.',
+    tags: ['Python', 'Causal Inference', 'Synthetic Control', 'DiD', 'Permutation Testing', 'SciPy'],
+    detail: `## Geo-Lift Incrementality Testing Framework
+
+**Domain:** D2C E-commerce / Marketing Measurement Science
+**Objective:** Measure the true causal impact of a paid social campaign across 40 US DMAs — moving beyond last-touch attribution to counterfactual-based incrementality.
+
+---
+
+### The Business Problem
+
+A D2C outdoor lifestyle brand spends ~$160K per campaign flight on paid social. Last-touch attribution credits far more revenue to paid channels — but much of that demand would have converted organically. The CFO wants the honest number: *what revenue did the campaign actually cause?*
+
+---
+
+### Experiment Design
+
+| Dimension | Value |
+|-----------|-------|
+| Geographic units | 40 US DMAs |
+| Treatment group | Top 20 by market size (realistic media-team selection) |
+| Pre-period | 52 weeks (full year) |
+| Campaign flight | 8 weeks |
+| True lift planted | **18%** (known ground truth for validation) |
+| Total spend | ~$160K |
+
+**Three relational tables**: \`markets\` (40 rows), \`weekly_metrics\` (2,400 rows), \`campaign_spend\` (160 rows).
+
+---
+
+### Methods
+
+**Market Matching** — Pairs each treatment market with its highest-correlation control market using normalised pre-period order series (trend similarity, not level similarity).
+
+**Difference-in-Differences** — Two-way fixed effects estimator with bootstrap 95% CI. Parallel trends validated on log-scale growth rates (not absolute levels).
+
+**Synthetic Control** — SLSQP-optimised convex combination of donor markets. Normalise → optimise on trends → denormalise to recover absolute lift. Pre-period RMSPE: **1.7%**.
+
+**Permutation Testing** — 1,000 label-shuffle permutations build an empirical null distribution. No distributional assumptions required.
+
+---
+
+### Results
+
+| Metric | DiD | Synthetic Control |
+|--------|-----|-----------------|
+| **Lift %** | **18.3%** | **18.9%** |
+| Incremental orders | 9,449 | 9,714 |
+| Incremental revenue | $617K | $635K |
+| **iROAS** | **3.86×** | **3.96×** |
+| p-value | **0.0000** | — |
+| Method agreement | **0.6pp gap** | — |
+
+Ground truth was 18%. Both methods recovered it to within 1pp — strong convergent validity.
+
+---
+
+### Edge Cases Documented and Fixed
+
+Four silent-failure traps caught during development, with before/after numbers:
+
+| # | Issue | Symptom | Fix |
+|---|-------|---------|-----|
+| EC-1 | Spend miscalibration | iROAS = 0.11× | Recalibrate spend to market revenue scale |
+| EC-2 | Level vs. trend correlation | Mean match r = 0.37, no pair > 0.64 | Normalise series to pre-period mean before correlating |
+| EC-2b | Weak seasonal SNR | Normalisation alone gave r = 0.37 | Strengthen seasonal signal, reduce noise σ |
+| EC-3 | Synthetic control infeasibility | RMSPE = **99%**, lift = **12,876%**, \`success=False\` | Normalise → optimise → denormalise |
+| EC-4 | Parallel trends on wrong scale | 425% slope WARN (false alarm) | Log-scale slopes measure growth rates, not absolute increments |
+
+EC-3 is the most dangerous: the optimiser returned a result without raising an exception. The 12,876% lift *looked like a number* — it would have gone into a deck undetected without ground-truth validation.
+
+---
+
+### Business Impact
+
+- **iROAS of ~4×** — campaign is profitable and above the 3× scale threshold
+- **Per-market lift waterfall** identifies which of 20 markets to prioritise in the next flight
+- **p = 0.0000, Z = 4.51** — result is statistically unambiguous
+- Output CSV (\`geo_lift_results.csv\`) is finance-ready with market-level tier classification`,
   },
   {
     id: 'mta-engine',
